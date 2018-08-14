@@ -1,5 +1,5 @@
 class Simplemde::Asset < ApplicationRecord
-  set_table_name 'simplemde_assets'
+  self.table_name = 'simplemde_assets'
   mount_uploader :asset, Simplemde::AssetUploader
   validates :asset, presence: true
   before_save :update_asset_attributes

@@ -1,3 +1,15 @@
 $(document).on 'turbolinks:load', ->
+  inlineAttachmentConfig =
+    uploadUrl: '/simplemde/upload.json',
+    extraHeaders:
+      'X-CSRF-Token': $('meta[name=csrf-token]').attr("content")
+
   $('.rails_simplemde').each ->
-    new SimpleMDE({ element: this, forceSync: true })
+    simplemde = new SimpleMDE({ element: this, forceSync: true })
+    configs =
+    	extraParams:
+    		owner_type: $(this).data('ownerType'),
+    		owner_id: $(this).data('ownerId')
+    
+    configs = Object.assign(configs, inlineAttachmentConfig)
+    inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, configs)
