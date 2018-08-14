@@ -1,0 +1,8 @@
+Description:
+    install simplemde editor for your application
+
+Example:
+    rails generate rails_simplemde_editor:install
+
+    This will create:
+        TODO
