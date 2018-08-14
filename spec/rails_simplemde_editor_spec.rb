@@ -3,7 +3,7 @@ RSpec.describe RailsSimplemdeEditor do
     expect(RailsSimplemdeEditor::VERSION).not_to be nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(true)
+  it "has an Engine class, which inherited from Rails::Engine" do
+    expect(RailsSimplemdeEditor::Engine.superclass).to be Rails::Engine
   end
 end
