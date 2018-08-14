@@ -1,0 +1,10 @@
+Description:
+    Copy model, migration and uploader to your application.
+
+Example:
+    rails generate rails_simplemde_editor:migration
+
+    This will create:
+        app/models/simplemde/asset.rb
+        app/models/simplemde/image.rb
+        db/migrate/xxxxxxxxx_create_simplemde_assets.rb
