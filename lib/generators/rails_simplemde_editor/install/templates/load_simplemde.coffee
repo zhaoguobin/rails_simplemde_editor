@@ -8,8 +8,8 @@ $(document).on 'turbolinks:load', ->
     simplemde = new SimpleMDE({ element: this, forceSync: true })
     configs =
     	extraParams:
-    		owner_type: $(this).data('ownerType'),
-    		owner_id: $(this).data('ownerId')
+    		owner_type: $(this).data('ownerType') || '',
+    		owner_id: $(this).data('ownerId') || ''
     
     configs = Object.assign(configs, inlineAttachmentConfig)
     inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, configs)
