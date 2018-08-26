@@ -1,3 +1,11 @@
+simplemdes = []
+
+$(document).on 'turbolinks:before-cache', ->
+  simplemdes.forEach (simplemde) ->
+    simplemde.toTextArea()
+    simplemde = null
+  simplemdes = []
+
 $(document).on 'turbolinks:load', ->
   inlineAttachmentConfig =
     uploadUrl: '/simplemde/upload.json',
@@ -7,9 +15,10 @@ $(document).on 'turbolinks:load', ->
   $('.rails_simplemde').each ->
     simplemde = new SimpleMDE({ element: this, forceSync: true })
     configs =
-    	extraParams:
-    		owner_type: $(this).data('ownerType') || '',
-    		owner_id: $(this).data('ownerId') || ''
+      extraParams:
+        owner_type: $(this).data('ownerType') || '',
+        owner_id: $(this).data('ownerId') || ''
     
     configs = Object.assign(configs, inlineAttachmentConfig)
     inlineAttachment.editors.codemirror4.attach(simplemde.codemirror, configs)
+    simplemdes.push(simplemde)
